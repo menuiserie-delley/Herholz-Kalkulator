@@ -20,64 +20,7 @@
     </p>
 
     <section class="tk-diagram">
-      <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schema Türzarge im Wandquerschnitt">
-        <defs>
-          <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
-            <rect width="8" height="8" fill="#e9e4da"/>
-            <line x1="0" y1="0" x2="0" y2="8" stroke="#b9ae98" stroke-width="2"/>
-          </pattern>
-          <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-            <path d="M0,0 L8,4 L0,8 z" fill="#254734"/>
-          </marker>
-          <marker id="arrowStart" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse">
-            <path d="M0,0 L8,4 L0,8 z" fill="#254734"/>
-          </marker>
-        </defs>
-
-        <!-- Wand links / rechts -->
-        <rect x="10" y="90" width="90" height="150" fill="url(#hatch)" stroke="#8a8065"/>
-        <rect x="540" y="90" width="90" height="150" fill="url(#hatch)" stroke="#8a8065"/>
-
-        <!-- Aussenkante Bekleidung -->
-        <rect x="70" y="100" width="500" height="130" fill="#f3ede0" stroke="#c9bfa5"/>
-        <!-- Aussenkante Futter -->
-        <rect x="95" y="100" width="450" height="130" fill="#e6ddc8" stroke="#c9bfa5"/>
-        <!-- Futter-Falz / Türblatt -->
-        <rect x="120" y="108" width="400" height="114" fill="#ffffff" stroke="#b9ae98"/>
-        <!-- Türblatt (Bestellmass A) -->
-        <rect x="140" y="112" width="360" height="106" fill="#dfd6c3" stroke="#254734" stroke-width="1.5"/>
-
-        <!-- Massketten oben: E / A / B gestapelt -->
-        <line x1="70" y1="40" x2="70" y2="100" stroke="#999" stroke-width="1"/>
-        <line x1="570" y1="40" x2="570" y2="100" stroke="#999" stroke-width="1"/>
-        <line x1="70" y1="46" x2="570" y2="46" stroke="#254734" stroke-width="1.3" marker-start="url(#arrowStart)" marker-end="url(#arrow)"/>
-        <text x="320" y="40" text-anchor="middle" font-size="13" fill="#254734" font-weight="bold">E – Aussenkante Bekleidung</text>
-
-        <line x1="140" y1="58" x2="140" y2="112" stroke="#999" stroke-width="1"/>
-        <line x1="480" y1="58" x2="480" y2="112" stroke="#999" stroke-width="1"/>
-        <line x1="140" y1="64" x2="480" y2="64" stroke="#254734" stroke-width="1.3" marker-start="url(#arrowStart)" marker-end="url(#arrow)"/>
-        <text x="310" y="80" text-anchor="middle" font-size="13" fill="#254734" font-weight="bold">A – Bestellmass Türe (Türblatt-Aussenmass)</text>
-
-        <line x1="120" y1="26" x2="120" y2="108" stroke="#999" stroke-width="1"/>
-        <line x1="520" y1="26" x2="520" y2="108" stroke="#999" stroke-width="1"/>
-        <line x1="120" y1="30" x2="520" y2="30" stroke="#254734" stroke-width="1.3" marker-start="url(#arrowStart)" marker-end="url(#arrow)"/>
-        <text x="320" y="24" text-anchor="middle" font-size="13" fill="#254734" font-weight="bold">B – Futter-Falzmass</text>
-
-        <!-- Massketten unten: C / D -->
-        <line x1="140" y1="218" x2="140" y2="252" stroke="#999" stroke-width="1"/>
-        <line x1="480" y1="218" x2="480" y2="252" stroke="#999" stroke-width="1"/>
-        <line x1="140" y1="246" x2="480" y2="246" stroke="#5c6b57" stroke-width="1.3" marker-start="url(#arrowStart)" marker-end="url(#arrow)"/>
-        <text x="310" y="262" text-anchor="middle" font-size="13" fill="#5c6b57" font-weight="bold">C – lichtes Durchgangsmass</text>
-
-        <line x1="95" y1="230" x2="95" y2="270" stroke="#999" stroke-width="1"/>
-        <line x1="545" y1="230" x2="545" y2="270" stroke="#999" stroke-width="1"/>
-        <line x1="95" y1="264" x2="545" y2="264" stroke="#5c6b57" stroke-width="1.3" marker-start="url(#arrowStart)" marker-end="url(#arrow)"/>
-        <text x="320" y="280" text-anchor="middle" font-size="13" fill="#5c6b57" font-weight="bold">D – Aussenkante Futter</text>
-
-        <!-- Wandöffnung Breite gesamt -->
-        <line x1="10" y1="292" x2="630" y2="292" stroke="#8a8065" stroke-width="1.3" marker-start="url(#arrowStart)" marker-end="url(#arrow)"/>
-        <text x="320" y="298" text-anchor="middle" font-size="12" fill="#8a8065">Wandöffnung – Breite (rohes Mauerlicht)</text>
-      </svg>
+      <img src="tuerzarge-schema.png" alt="Schema Türzarge im Wandquerschnitt mit Massen A bis E" class="tk-diagram-img" />
       <p class="tk-diagram-caption">
         Schema (nicht massstäblich): <strong>A</strong> = Bestellmass Türe · <strong>B</strong> = Futter-Falzmass ·
         <strong>C</strong> = lichtes Durchgangsmass · <strong>D</strong> = Aussenkante Futter · <strong>E</strong> = Aussenkante Zierbekleidung
