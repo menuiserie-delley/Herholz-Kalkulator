@@ -1,0 +1,243 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f6f6f6;
+  color: #333;
+}
+
+.green-header {
+  background: #2F4F4F;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  max-width: 250px;
+}
+
+main {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.05);
+}
+
+h1 {
+  color: #254734;
+}
+
+h2 {
+  color: #254734;
+  margin-top: 36px;
+}
+
+.note p {
+  margin: 5px 0;
+}
+
+button {
+  background-color: #2F4F4F;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.anfrage-btn {
+  display: block;
+  width: 100%;
+  background-color: #c47a2c;
+  font-size: 17px;
+  padding: 14px 20px;
+  margin-top: 24px;
+}
+.anfrage-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.anfrage-hint {
+  font-size: 12.5px;
+  color: #777;
+  font-style: italic;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* ---- Türen-Kalkulator ---- */
+
+.tk-intro {
+  color: #555;
+  line-height: 1.5;
+}
+
+.tk-diagram {
+  background: #fafaf7;
+  border: 1px solid #eee2cf;
+  border-radius: 10px;
+  padding: 10px 14px 14px;
+  margin: 20px 0;
+}
+.tk-diagram svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.tk-diagram-caption {
+  font-size: 12.5px;
+  color: #666;
+  text-align: center;
+  margin: 8px 0 0;
+  line-height: 1.6;
+}
+
+.tk-mode-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 18px 0 6px;
+  font-size: 15px;
+}
+.tk-mode-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.tk-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(160px, 1fr));
+  gap: 14px 20px;
+  margin-top: 16px;
+}
+.tk-grid label,
+.tk-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #254734;
+}
+.tk-comment {
+  margin-top: 16px;
+}
+.tk-grid input,
+.tk-grid select,
+.tk-comment input {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: normal;
+  color: #333;
+  padding: 9px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.tk-warning {
+  background: #fdecea;
+  border: 1px solid #f5c2bb;
+  color: #8a2c22;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.ergebnis-box {
+  background: #f6f6f6;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-top: 16px;
+  margin-bottom: 12px;
+}
+.ergebnis-box h3 {
+  margin: 0 0 8px;
+  color: #2F4F4F;
+}
+.ergebnis-box p {
+  margin: 4px 0;
+}
+.ergebnis-total {
+  background: #2F4F4F;
+  color: #fff;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tk-add-btn {
+  background-color: #254734;
+}
+
+.tk-liste-section {
+  margin-top: 10px;
+}
+.tk-empty {
+  color: #888;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.tk-table-wrap {
+  overflow-x: auto;
+}
+.tk-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 13.5px;
+}
+.tk-table th,
+.tk-table td {
+  border-bottom: 1px solid #eee;
+  padding: 8px 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+.tk-table th {
+  color: #254734;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.tk-remove-btn {
+  background: none;
+  color: #b23b2e;
+  border: 1px solid #e3b5ac;
+  padding: 4px 10px;
+  font-size: 12.5px;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.tk-btn-secondary {
+  display: block;
+  width: 100%;
+  background: #fff;
+  color: #254734;
+  border: 1.5px solid #254734;
+  margin-top: 10px;
+}
+.tk-btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
