@@ -51,6 +51,70 @@
         </label>
       </div>
 
+      <div class="tk-bandseite">
+        <span class="tk-bandseite-label">Bandseite (Anschlag)</span>
+        <div class="tk-mode-toggle tk-bandseite-toggle">
+          <label><input type="radio" name="tk-bandseite" value="links" checked> DIN Links</label>
+          <label><input type="radio" name="tk-bandseite" value="rechts"> DIN Rechts</label>
+        </div>
+
+        <details class="tk-din-details">
+          <summary>Was bedeutet DIN Links / DIN Rechts?</summary>
+          <div class="tk-din-diagram">
+            <svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze DIN Links und DIN Rechts">
+              <defs>
+                <pattern id="hatch2" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)">
+                  <rect width="7" height="7" fill="#e9e4da"/>
+                  <line x1="0" y1="0" x2="0" y2="7" stroke="#b9ae98" stroke-width="1.6"/>
+                </pattern>
+                <marker id="arH" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+                  <path d="M0,0 L7,3.5 L0,7 z" fill="#254734"/>
+                </marker>
+              </defs>
+
+              <line x1="310" y1="10" x2="310" y2="250" stroke="#e2ddd0" stroke-width="1"/>
+
+              <!-- DIN LINKS -->
+              <g>
+                <text x="155" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#254734">DIN Links</text>
+                <rect x="20" y="105" width="90" height="30" fill="url(#hatch2)" stroke="#8a8065"/>
+                <rect x="190" y="105" width="90" height="30" fill="url(#hatch2)" stroke="#8a8065"/>
+                <line x1="20" y1="120" x2="280" y2="120" stroke="#555" stroke-width="2"/>
+                <rect x="106" y="107" width="8" height="8" fill="#254734"/>
+                <rect x="106" y="146" width="8" height="8" fill="#254734"/>
+                <path d="M190,120 A80,80 0 0,0 110,40" fill="none" stroke="#8a8065" stroke-width="1.3" stroke-dasharray="4,3"/>
+                <line x1="110" y1="120" x2="110" y2="45" stroke="#254734" stroke-width="4" stroke-linecap="round" marker-end="url(#arH)"/>
+                <circle cx="150" cy="205" r="8" fill="#c47a2c"/>
+                <line x1="150" y1="213" x2="150" y2="230" stroke="#c47a2c" stroke-width="3" stroke-linecap="round"/>
+                <line x1="150" y1="188" x2="150" y2="150" stroke="#c47a2c" stroke-width="1.6" stroke-dasharray="3,3" marker-end="url(#arH)"/>
+                <text x="150" y="248" text-anchor="middle" font-size="11.5" fill="#777">Betrachter</text>
+              </g>
+
+              <!-- DIN RECHTS -->
+              <g transform="translate(310,0)">
+                <text x="155" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#254734">DIN Rechts</text>
+                <rect x="20" y="105" width="90" height="30" fill="url(#hatch2)" stroke="#8a8065"/>
+                <rect x="190" y="105" width="90" height="30" fill="url(#hatch2)" stroke="#8a8065"/>
+                <line x1="20" y1="120" x2="280" y2="120" stroke="#555" stroke-width="2"/>
+                <rect x="186" y="107" width="8" height="8" fill="#254734"/>
+                <rect x="186" y="146" width="8" height="8" fill="#254734"/>
+                <path d="M110,120 A80,80 0 0,1 190,40" fill="none" stroke="#8a8065" stroke-width="1.3" stroke-dasharray="4,3"/>
+                <line x1="190" y1="120" x2="190" y2="45" stroke="#254734" stroke-width="4" stroke-linecap="round" marker-end="url(#arH)"/>
+                <circle cx="150" cy="205" r="8" fill="#c47a2c"/>
+                <line x1="150" y1="213" x2="150" y2="230" stroke="#c47a2c" stroke-width="3" stroke-linecap="round"/>
+                <line x1="150" y1="188" x2="150" y2="150" stroke="#c47a2c" stroke-width="1.6" stroke-dasharray="3,3" marker-end="url(#arH)"/>
+                <text x="150" y="248" text-anchor="middle" font-size="11.5" fill="#777">Betrachter</text>
+              </g>
+            </svg>
+            <p class="tk-diagram-caption">
+              Der Betrachter steht auf der Seite, von der die Türe weg aufgestossen wird (Türe öffnet vom
+              Betrachter weg). Sind die Bänder (Scharniere) dabei auf der <strong>linken</strong> Seite → <strong>DIN Links</strong>,
+              auf der <strong>rechten</strong> Seite → <strong>DIN Rechts</strong>.
+            </p>
+          </div>
+        </details>
+      </div>
+
       <label class="tk-comment">Bezeichnung / Position (optional)
         <input type="text" id="tk-bezeichnung" placeholder="z. B. Zimmer 1, weiss, DIN links" />
       </label>

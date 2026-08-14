@@ -137,6 +137,45 @@ footer {
 .tk-comment {
   margin-top: 16px;
 }
+
+.tk-bandseite {
+  margin-top: 20px;
+}
+.tk-bandseite-label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #254734;
+  margin-bottom: 6px;
+}
+.tk-bandseite-toggle {
+  margin: 0 0 4px;
+}
+
+.tk-din-details {
+  margin-top: 10px;
+}
+.tk-din-details summary {
+  cursor: pointer;
+  color: #2F4F4F;
+  font-size: 13.5px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.tk-din-diagram {
+  background: #fafaf7;
+  border: 1px solid #eee2cf;
+  border-radius: 10px;
+  padding: 10px 14px 14px;
+  margin-top: 10px;
+}
+.tk-din-diagram svg {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
 .tk-grid input,
 .tk-grid select,
 .tk-comment input {

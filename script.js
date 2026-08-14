@@ -74,6 +74,7 @@ function berechne() {
   const hoehe = parseFloat(document.getElementById("tk-hoehe").value);
   const wandstaerke = parseFloat(document.getElementById("tk-wandstaerke").value);
   const bekleidung = document.getElementById("tk-bekleidung").value; // "50" oder "625"
+  const bandseite = document.querySelector('input[name="tk-bandseite"]:checked').value; // "links" oder "rechts"
 
   const ergebnisDiv = document.getElementById("tk-ergebnis");
 
@@ -103,6 +104,7 @@ function berechne() {
 
   const eSpalte = bekleidung === "625" ? "E625" : "E50";
   const bekleidungLabel = bekleidung === "625" ? "62.5 / 62.5 mm" : "50 / 50 mm";
+  const bandseiteLabel = bandseite === "rechts" ? "DIN Rechts" : "DIN Links";
 
   const result = {
     modus,
@@ -111,6 +113,7 @@ function berechne() {
     wandstaerkeEingabe: wandstaerke || null,
     bezeichnung: document.getElementById("tk-bezeichnung").value.trim(),
     bekleidungLabel,
+    bandseiteLabel,
     A: { breite: rowB.A, hoehe: rowH.A },
     B: { breite: rowB.B, hoehe: rowH.B },
     C: { breite: rowB.C, hoehe: rowH.C },
@@ -137,6 +140,7 @@ function zeigeErgebnis(r) {
       <p><strong>C – lichtes Durchgangsmass:</strong> ${r.C.breite} × ${r.C.hoehe} mm</p>
       <p><strong>D – Aussenkante Futter:</strong> ${r.D.breite} × ${r.D.hoehe} mm</p>
       <p><strong>E – Aussenkante Bekleidung (${r.bekleidungLabel}):</strong> ${r.E.breite} × ${r.E.hoehe} mm</p>
+      <p><strong>Bandseite:</strong> ${r.bandseiteLabel}</p>
       ${hinweisC}
     </div>
     ${r.zierBestellmass ? `
@@ -199,6 +203,7 @@ function renderListe() {
       <td>${r.bezeichnung || "–"}</td>
       <td>${r.A.breite} × ${r.A.hoehe} mm</td>
       <td>${r.zierBestellmass ? r.zierBestellmass + " mm" : "–"}</td>
+      <td>${r.bandseiteLabel}</td>
       <td><button class="tk-remove-btn" data-index="${i}">Entfernen</button></td>
     </tr>`).join("");
 
@@ -206,7 +211,7 @@ function renderListe() {
     <div class="tk-table-wrap">
       <table class="tk-table">
         <thead>
-          <tr><th>Pos</th><th>Bezeichnung</th><th>Bestellmass A (B×H)</th><th>Zierbekleidung</th><th></th></tr>
+          <tr><th>Pos</th><th>Bezeichnung</th><th>Bestellmass A (B×H)</th><th>Zierbekleidung</th><th>Band</th><th></th></tr>
         </thead>
         <tbody>${zeilen}</tbody>
       </table>
@@ -229,6 +234,7 @@ function bestellTextErstellen() {
       `  Futter-Falzmass (B): ${r.B.breite} x ${r.B.hoehe} mm`,
       `  Lichtes Durchgangsmass (C): ${r.C.breite} x ${r.C.hoehe} mm`,
       `  Zierbekleidung: ${r.bekleidungLabel}${r.zierBestellmass ? `, Bestellmass ${r.zierBestellmass} mm (Bereich ${r.zierBereich})` : ""}`,
+      `  Bandseite: ${r.bandseiteLabel}`,
       `  Eingabe: ${r.modus === "roh" ? "rohes Mauerlicht" : "lichtes Durchgangsmass (bestehend)"} ${r.breiteEingabe} x ${r.hoeheEingabe} mm${r.wandstaerkeEingabe ? `, Wandstärke ${r.wandstaerkeEingabe} mm` : ""}`,
     ];
     return teile.join("\n");
