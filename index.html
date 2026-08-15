@@ -61,49 +61,73 @@
         <details class="tk-din-details">
           <summary>Was bedeutet DIN Links / DIN Rechts?</summary>
           <div class="tk-din-diagram">
-            <svg viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze DIN Links und DIN Rechts">
+            <svg viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Türquerschnitt-Skizze DIN Links und DIN Rechts">
               <defs>
                 <pattern id="hatch2" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)">
                   <rect width="7" height="7" fill="#e9e4da"/>
                   <line x1="0" y1="0" x2="0" y2="7" stroke="#b9ae98" stroke-width="1.6"/>
                 </pattern>
                 <marker id="arH" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
-                  <path d="M0,0 L7,3.5 L0,7 z" fill="#254734"/>
+                  <path d="M0,0 L7,3.5 L0,7 z" fill="#8a8065"/>
                 </marker>
               </defs>
 
-              <line x1="310" y1="10" x2="310" y2="290" stroke="#e2ddd0" stroke-width="1"/>
+              <line x1="310" y1="10" x2="310" y2="310" stroke="#e2ddd0" stroke-width="1"/>
 
               <!-- DIN LINKS: Bänder am linken Blendrahmen, Betrachter steht auf der Bandseite (Seite, zu der die Türe hin öffnet) -->
               <g>
                 <text x="155" y="24" text-anchor="middle" font-size="18" font-weight="bold" fill="#254734">DIN Links</text>
-                <rect x="20" y="105" width="90" height="30" fill="url(#hatch2)" stroke="#8a8065"/>
-                <rect x="190" y="105" width="90" height="30" fill="url(#hatch2)" stroke="#8a8065"/>
-                <line x1="20" y1="120" x2="280" y2="120" stroke="#555" stroke-width="2"/>
-                <rect x="106" y="107" width="8" height="8" fill="#254734"/>
-                <rect x="106" y="146" width="8" height="8" fill="#254734"/>
-                <path d="M190,120 A80,80 0 0,1 110,200" fill="none" stroke="#8a8065" stroke-width="1.3" stroke-dasharray="4,3"/>
-                <line x1="110" y1="120" x2="110" y2="195" stroke="#254734" stroke-width="4" stroke-linecap="round" marker-end="url(#arH)"/>
-                <circle cx="230" cy="235" r="8" fill="#c47a2c"/>
-                <line x1="230" y1="243" x2="230" y2="260" stroke="#c47a2c" stroke-width="3" stroke-linecap="round"/>
-                <line x1="222" y1="222" x2="165" y2="140" stroke="#c47a2c" stroke-width="1.6" stroke-dasharray="3,3" marker-end="url(#arH)"/>
-                <text x="230" y="278" text-anchor="middle" font-size="11.5" fill="#777">Betrachter</text>
+
+                <rect x="20" y="100" width="80" height="60" fill="url(#hatch2)" stroke="#8a8065"/>
+                <rect x="200" y="100" width="80" height="60" fill="url(#hatch2)" stroke="#8a8065"/>
+
+                <rect x="100" y="95" width="18" height="70" fill="#e6ddc8" stroke="#8a8065" stroke-width="1"/>
+                <rect x="182" y="95" width="18" height="70" fill="#e6ddc8" stroke="#8a8065" stroke-width="1"/>
+
+                <rect x="118" y="126" width="64" height="8" fill="none" stroke="#b9ae98" stroke-width="1.3" stroke-dasharray="3,2"/>
+                <path d="M182,130 A64,64 0 0,1 118,194" fill="none" stroke="#8a8065" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arH)"/>
+
+                <rect x="111" y="102" width="9" height="12" rx="1.5" fill="#254734"/>
+                <rect x="111" y="146" width="9" height="12" rx="1.5" fill="#254734"/>
+
+                <rect x="114" y="130" width="8" height="64" rx="1" fill="#254734"/>
+                <circle cx="118" cy="184" r="2.6" fill="#c47a2c"/>
+
+                <g>
+                  <path d="M212,270 L216,236 L234,236 L238,270 Z" fill="#c47a2c"/>
+                  <circle cx="225" cy="222" r="9" fill="#c47a2c"/>
+                  <line x1="216" y1="222" x2="158" y2="150" stroke="#c47a2c" stroke-width="1.6" stroke-dasharray="3,3" marker-end="url(#arH)"/>
+                </g>
+                <text x="225" y="280" text-anchor="middle" font-size="12" fill="#777">Betrachter</text>
+                <text x="225" y="294" text-anchor="middle" font-size="10.5" fill="#999">(steht auf der Bandseite)</text>
               </g>
 
               <!-- DIN RECHTS: Bänder am rechten Blendrahmen -->
               <g transform="translate(310,0)">
                 <text x="155" y="24" text-anchor="middle" font-size="18" font-weight="bold" fill="#254734">DIN Rechts</text>
-                <rect x="20" y="105" width="90" height="30" fill="url(#hatch2)" stroke="#8a8065"/>
-                <rect x="190" y="105" width="90" height="30" fill="url(#hatch2)" stroke="#8a8065"/>
-                <line x1="20" y1="120" x2="280" y2="120" stroke="#555" stroke-width="2"/>
-                <rect x="186" y="107" width="8" height="8" fill="#254734"/>
-                <rect x="186" y="146" width="8" height="8" fill="#254734"/>
-                <path d="M110,120 A80,80 0 0,0 190,200" fill="none" stroke="#8a8065" stroke-width="1.3" stroke-dasharray="4,3"/>
-                <line x1="190" y1="120" x2="190" y2="195" stroke="#254734" stroke-width="4" stroke-linecap="round" marker-end="url(#arH)"/>
-                <circle cx="70" cy="235" r="8" fill="#c47a2c"/>
-                <line x1="70" y1="243" x2="70" y2="260" stroke="#c47a2c" stroke-width="3" stroke-linecap="round"/>
-                <line x1="78" y1="222" x2="135" y2="140" stroke="#c47a2c" stroke-width="1.6" stroke-dasharray="3,3" marker-end="url(#arH)"/>
-                <text x="70" y="278" text-anchor="middle" font-size="11.5" fill="#777">Betrachter</text>
+
+                <rect x="20" y="100" width="80" height="60" fill="url(#hatch2)" stroke="#8a8065"/>
+                <rect x="200" y="100" width="80" height="60" fill="url(#hatch2)" stroke="#8a8065"/>
+
+                <rect x="100" y="95" width="18" height="70" fill="#e6ddc8" stroke="#8a8065" stroke-width="1"/>
+                <rect x="182" y="95" width="18" height="70" fill="#e6ddc8" stroke="#8a8065" stroke-width="1"/>
+
+                <rect x="118" y="126" width="64" height="8" fill="none" stroke="#b9ae98" stroke-width="1.3" stroke-dasharray="3,2"/>
+                <path d="M118,130 A64,64 0 0,0 182,194" fill="none" stroke="#8a8065" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arH)"/>
+
+                <rect x="180" y="102" width="9" height="12" rx="1.5" fill="#254734"/>
+                <rect x="180" y="146" width="9" height="12" rx="1.5" fill="#254734"/>
+
+                <rect x="178" y="130" width="8" height="64" rx="1" fill="#254734"/>
+                <circle cx="182" cy="184" r="2.6" fill="#c47a2c"/>
+
+                <g>
+                  <path d="M62,270 L66,236 L84,236 L88,270 Z" fill="#c47a2c"/>
+                  <circle cx="75" cy="222" r="9" fill="#c47a2c"/>
+                  <line x1="84" y1="222" x2="142" y2="150" stroke="#c47a2c" stroke-width="1.6" stroke-dasharray="3,3" marker-end="url(#arH)"/>
+                </g>
+                <text x="75" y="280" text-anchor="middle" font-size="12" fill="#777">Betrachter</text>
+                <text x="75" y="294" text-anchor="middle" font-size="10.5" fill="#999">(steht auf der Bandseite)</text>
               </g>
             </svg>
             <p class="tk-diagram-caption">
