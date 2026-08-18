@@ -8,6 +8,16 @@
 
 const emailEmpfaenger = "info@menuiserie-delley.ch";
 
+// Dekor/Oberflächen-Auswahl. Um weitere Dekore hinzuzufügen: Bild in den Ordner
+// dekore/ legen und hier einen Eintrag {id, name, img} ergänzen.
+const DEKORE = [
+  { id: "ahorn", name: "Ahorn", img: "dekore/dekor-ahorn.png" },
+  { id: "weiss", name: "Weiss (RAL 9010)", img: "dekore/dekor-weiss.png" },
+  { id: "eiche", name: "Eiche", img: "dekore/dekor-eiche.png" },
+  { id: "creme", name: "Weiss-Elfenbein (RAL 9001)", img: "dekore/dekor-creme.png" },
+  { id: "grau", name: "Grau (RAL 7035)", img: "dekore/dekor-grau.png" },
+];
+
 const NORM_BREITE = [
   { min: 665, roh: 680, max: 720, A: 650, B: 631, C: 603, D: 649, E50: 731, E625: 756 },
   { min: 715, roh: 730, max: 770, A: 700, B: 681, C: 653, D: 699, E50: 781, E625: 806 },
@@ -75,6 +85,8 @@ function berechne() {
   const wandstaerke = parseFloat(document.getElementById("tk-wandstaerke").value);
   const bekleidung = document.getElementById("tk-bekleidung").value; // "50" oder "625"
   const bandseite = document.querySelector('input[name="tk-bandseite"]:checked').value; // "links" oder "rechts"
+  const dekorId = document.querySelector('input[name="tk-dekor"]:checked')?.value || null;
+  const dekor = DEKORE.find((d) => d.id === dekorId) || null;
 
   const ergebnisDiv = document.getElementById("tk-ergebnis");
 
@@ -114,6 +126,8 @@ function berechne() {
     bezeichnung: document.getElementById("tk-bezeichnung").value.trim(),
     bekleidungLabel,
     bandseiteLabel,
+    dekorName: dekor ? dekor.name : null,
+    dekorImg: dekor ? dekor.img : null,
     A: { breite: rowB.A, hoehe: rowH.A },
     B: { breite: rowB.B, hoehe: rowH.B },
     C: { breite: rowB.C, hoehe: rowH.C },
@@ -141,6 +155,7 @@ function zeigeErgebnis(r) {
       <p><strong>D – Aussenkante Futter:</strong> ${r.D.breite} × ${r.D.hoehe} mm</p>
       <p><strong>E – Aussenkante Bekleidung (${r.bekleidungLabel}):</strong> ${r.E.breite} × ${r.E.hoehe} mm</p>
       <p><strong>Bandseite:</strong> ${r.bandseiteLabel}</p>
+      <p><strong>Dekor / Oberfläche:</strong> ${r.dekorName || "–"}</p>
       ${hinweisC}
     </div>
     ${r.zierBestellmass ? `
@@ -204,6 +219,7 @@ function renderListe() {
       <td>${r.A.breite} × ${r.A.hoehe} mm</td>
       <td>${r.zierBestellmass ? r.zierBestellmass + " mm" : "–"}</td>
       <td>${r.bandseiteLabel}</td>
+      <td>${r.dekorImg ? `<img src="${r.dekorImg}" alt="${r.dekorName}" class="tk-table-swatch">` : ""}${r.dekorName || "–"}</td>
       <td><button class="tk-remove-btn" data-index="${i}">Entfernen</button></td>
     </tr>`).join("");
 
@@ -211,7 +227,7 @@ function renderListe() {
     <div class="tk-table-wrap">
       <table class="tk-table">
         <thead>
-          <tr><th>Pos</th><th>Bezeichnung</th><th>Bestellmass A (B×H)</th><th>Zierbekleidung</th><th>Band</th><th></th></tr>
+          <tr><th>Pos</th><th>Bezeichnung</th><th>Bestellmass A (B×H)</th><th>Zierbekleidung</th><th>Band</th><th>Dekor</th><th></th></tr>
         </thead>
         <tbody>${zeilen}</tbody>
       </table>
@@ -235,6 +251,7 @@ function bestellTextErstellen() {
       `  Lichtes Durchgangsmass (C): ${r.C.breite} x ${r.C.hoehe} mm`,
       `  Zierbekleidung: ${r.bekleidungLabel}${r.zierBestellmass ? `, Bestellmass ${r.zierBestellmass} mm (Bereich ${r.zierBereich})` : ""}`,
       `  Bandseite: ${r.bandseiteLabel}`,
+      `  Dekor / Oberfläche: ${r.dekorName || "nicht gewählt"}`,
       `  Eingabe: ${r.modus === "roh" ? "rohes Mauerlicht" : "lichtes Durchgangsmass (bestehend)"} ${r.breiteEingabe} x ${r.hoeheEingabe} mm${r.wandstaerkeEingabe ? `, Wandstärke ${r.wandstaerkeEingabe} mm` : ""}`,
     ];
     return teile.join("\n");
@@ -280,7 +297,25 @@ async function listeKopieren() {
   setTimeout(() => (btn.innerText = original), 1500);
 }
 
+function renderDekorGrid() {
+  const grid = document.getElementById("tk-dekor-grid");
+  grid.innerHTML = DEKORE.map((d, i) => `
+    <label class="tk-dekor-option${i === 0 ? " is-selected" : ""}">
+      <input type="radio" name="tk-dekor" value="${d.id}" ${i === 0 ? "checked" : ""}>
+      <img src="${d.img}" alt="${d.name}" class="tk-dekor-swatch">
+      <span>${d.name}</span>
+    </label>`).join("");
+
+  grid.querySelectorAll('input[name="tk-dekor"]').forEach((input) => {
+    input.addEventListener("change", () => {
+      grid.querySelectorAll(".tk-dekor-option").forEach((el) => el.classList.remove("is-selected"));
+      input.closest(".tk-dekor-option").classList.add("is-selected");
+    });
+  });
+}
+
 function setup() {
+  renderDekorGrid();
   document.getElementById("tk-berechnen-btn").onclick = berechne;
   document.getElementById("tk-senden-btn").onclick = bestellungSenden;
   document.getElementById("tk-kopieren-btn").onclick = listeKopieren;

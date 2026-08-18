@@ -155,6 +155,62 @@ footer {
 .tk-din-details {
   margin-top: 10px;
 }
+.tk-dekor {
+  margin-top: 20px;
+}
+.tk-dekor-label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #254734;
+  margin-bottom: 8px;
+}
+.tk-dekor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
+}
+.tk-dekor-option {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 4px;
+  text-align: center;
+}
+.tk-dekor-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.tk-dekor-swatch {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  display: block;
+}
+.tk-dekor-option span {
+  font-size: 11.5px;
+  color: #444;
+  line-height: 1.25;
+}
+.tk-dekor-option.is-selected {
+  border-color: #2F4F4F;
+  background: #f0f3f2;
+}
+.tk-dekor-option.is-selected .tk-dekor-swatch {
+  border-color: #2F4F4F;
+}
+.tk-dekor-option.is-selected span {
+  font-weight: bold;
+  color: #254734;
+}
+
 .tk-din-details summary {
   cursor: pointer;
   color: #2F4F4F;
@@ -257,6 +313,15 @@ footer {
   font-size: 12.5px;
   text-transform: uppercase;
   letter-spacing: 0.02em;
+}
+.tk-table-swatch {
+  width: 22px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  vertical-align: middle;
+  margin-right: 6px;
 }
 .tk-remove-btn {
   background: none;
