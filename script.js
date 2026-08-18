@@ -302,7 +302,10 @@ function renderDekorGrid() {
   grid.innerHTML = DEKORE.map((d, i) => `
     <label class="tk-dekor-option${i === 0 ? " is-selected" : ""}">
       <input type="radio" name="tk-dekor" value="${d.id}" ${i === 0 ? "checked" : ""}>
-      <img src="${d.img}" alt="${d.name}" class="tk-dekor-swatch">
+      <span class="tk-dekor-swatch-wrap">
+        <img src="${d.img}" alt="${d.name}" class="tk-dekor-swatch">
+        <button type="button" class="tk-dekor-zoom" data-img="${d.img}" data-name="${d.name}" aria-label="${d.name} vergrössern">🔍</button>
+      </span>
       <span>${d.name}</span>
     </label>`).join("");
 
@@ -312,6 +315,25 @@ function renderDekorGrid() {
       input.closest(".tk-dekor-option").classList.add("is-selected");
     });
   });
+
+  grid.querySelectorAll(".tk-dekor-zoom").forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      oeffneLightbox(btn.dataset.img, btn.dataset.name);
+    });
+  });
+}
+
+function oeffneLightbox(img, name) {
+  document.getElementById("tk-lightbox-img").src = img;
+  document.getElementById("tk-lightbox-img").alt = name;
+  document.getElementById("tk-lightbox-caption").textContent = name;
+  document.getElementById("tk-lightbox").hidden = false;
+}
+
+function schliesseLightbox() {
+  document.getElementById("tk-lightbox").hidden = true;
 }
 
 function setup() {
@@ -319,6 +341,12 @@ function setup() {
   document.getElementById("tk-berechnen-btn").onclick = berechne;
   document.getElementById("tk-senden-btn").onclick = bestellungSenden;
   document.getElementById("tk-kopieren-btn").onclick = listeKopieren;
+  document.getElementById("tk-lightbox").onclick = schliesseLightbox;
+  document.getElementById("tk-lightbox-close").onclick = schliesseLightbox;
+  document.getElementById("tk-lightbox-img").onclick = (e) => e.stopPropagation();
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") schliesseLightbox();
+  });
   renderListe();
 }
 
