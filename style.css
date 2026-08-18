@@ -170,6 +170,9 @@ footer {
   grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   gap: 10px;
 }
+.tk-dekor-grid .tk-empty {
+  grid-column: 1 / -1;
+}
 .tk-dekor-option {
   cursor: pointer;
   display: flex;

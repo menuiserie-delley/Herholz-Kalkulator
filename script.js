@@ -9,14 +9,8 @@
 const emailEmpfaenger = "info@menuiserie-delley.ch";
 
 // Dekor/Oberflächen-Auswahl. Um weitere Dekore hinzuzufügen: Bild in den Ordner
-// dekore/ legen und hier einen Eintrag {id, name, img} ergänzen.
-const DEKORE = [
-  { id: "ahorn", name: "Ahorn", img: "dekore/dekor-ahorn.png" },
-  { id: "weiss", name: "Weiss (RAL 9010)", img: "dekore/dekor-weiss.png" },
-  { id: "eiche", name: "Eiche", img: "dekore/dekor-eiche.png" },
-  { id: "creme", name: "Weiss-Elfenbein (RAL 9001)", img: "dekore/dekor-creme.png" },
-  { id: "grau", name: "Grau (RAL 7035)", img: "dekore/dekor-grau.png" },
-];
+// dekore/ legen (Dateiname = Dekor-Name) und hier einen Eintrag {id, name, img} ergänzen.
+const DEKORE = [];
 
 const NORM_BREITE = [
   { min: 665, roh: 680, max: 720, A: 650, B: 631, C: 603, D: 649, E50: 731, E625: 756 },
@@ -299,6 +293,12 @@ async function listeKopieren() {
 
 function renderDekorGrid() {
   const grid = document.getElementById("tk-dekor-grid");
+
+  if (!DEKORE.length) {
+    grid.innerHTML = '<p class="tk-empty">Dekore werden in Kürze ergänzt.</p>';
+    return;
+  }
+
   grid.innerHTML = DEKORE.map((d, i) => `
     <label class="tk-dekor-option${i === 0 ? " is-selected" : ""}">
       <input type="radio" name="tk-dekor" value="${d.id}" ${i === 0 ? "checked" : ""}>
