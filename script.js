@@ -16,6 +16,11 @@ const DEKORE = [
   { id: "felsgrau", name: "Felsgrau", img: "dekore/felsgrau.png" },
   { id: "esche-weiss", name: "Esche weiss", img: "dekore/esche-weiss.png" },
   { id: "brilliant-weiss", name: "Brilliant weiss", img: "dekore/brilliant-weiss.png" },
+  { id: "titangrau", name: "Titangrau", img: "dekore/titangrau.png" },
+  { id: "valeur-grau", name: "Valeur grau", img: "dekore/valeur-grau.png" },
+  { id: "valeur-taupe", name: "Valeur Taupe", img: "dekore/valeur-taupe.png" },
+  { id: "berg-ahorn", name: "Berg Ahorn", img: "dekore/berg-ahorn.png" },
+  { id: "eiche-hell", name: "Eiche Hell", img: "dekore/eiche-hell.png" },
 ];
 
 const NORM_BREITE = [
