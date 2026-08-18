@@ -21,6 +21,11 @@ const DEKORE = [
   { id: "valeur-taupe", name: "Valeur Taupe", img: "dekore/valeur-taupe.png" },
   { id: "berg-ahorn", name: "Berg Ahorn", img: "dekore/berg-ahorn.png" },
   { id: "eiche-hell", name: "Eiche Hell", img: "dekore/eiche-hell.png" },
+  { id: "landbuche", name: "Landbuche", img: "dekore/landbuche.png" },
+  { id: "wildbuche", name: "Wildbuche", img: "dekore/wildbuche.png" },
+  { id: "vital-solar-eiche", name: "Vital Solar Eiche", img: "dekore/vital-solar-eiche.png" },
+  { id: "vital-pinie-arktis", name: "Vital Pinie Arktis", img: "dekore/vital-pinie-arktis.png" },
+  { id: "vital-pinie-hell", name: "Vital Pinie Hell", img: "dekore/vital-pinie-hell.png" },
 ];
 
 const NORM_BREITE = [
