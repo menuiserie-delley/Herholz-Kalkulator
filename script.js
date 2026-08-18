@@ -10,7 +10,13 @@ const emailEmpfaenger = "info@menuiserie-delley.ch";
 
 // Dekor/Oberflächen-Auswahl. Um weitere Dekore hinzuzufügen: Bild in den Ordner
 // dekore/ legen (Dateiname = Dekor-Name) und hier einen Eintrag {id, name, img} ergänzen.
-const DEKORE = [];
+const DEKORE = [
+  { id: "nebelgrau", name: "Nebelgrau", img: "dekore/nebelgrau.png" },
+  { id: "uni-weiss", name: "Uni weiss", img: "dekore/uni-weiss.png" },
+  { id: "felsgrau", name: "Felsgrau", img: "dekore/felsgrau.png" },
+  { id: "esche-weiss", name: "Esche weiss", img: "dekore/esche-weiss.png" },
+  { id: "brilliant-weiss", name: "Brilliant weiss", img: "dekore/brilliant-weiss.png" },
+];
 
 const NORM_BREITE = [
   { min: 665, roh: 680, max: 720, A: 650, B: 631, C: 603, D: 649, E50: 731, E625: 756 },
