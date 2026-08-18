@@ -28,6 +28,15 @@
     </section>
 
     <section class="tk-form">
+      <div class="tk-ausfuehrung">
+        <span class="tk-ausfuehrung-label">Was möchten Sie bestellen?</span>
+        <div class="tk-mode-toggle">
+          <label><input type="radio" name="tk-ausfuehrung" value="element" checked> Element (Türblatt + Zarge komplett)</label>
+          <label><input type="radio" name="tk-ausfuehrung" value="tuerblatt"> Nur Türblatt</label>
+          <label><input type="radio" name="tk-ausfuehrung" value="zarge"> Nur Zarge</label>
+        </div>
+      </div>
+
       <div class="tk-mode-toggle">
         <label><input type="radio" name="tk-modus" value="roh" checked> Rohes Mauerlicht (Neubau / Umbau)</label>
         <label><input type="radio" name="tk-modus" value="licht"> Lichtes Durchgangsmass einer bestehenden Türe</label>
@@ -73,6 +82,18 @@
       <div class="tk-dekor">
         <span class="tk-dekor-label">Dekor / Oberfläche</span>
         <div id="tk-dekor-grid" class="tk-dekor-grid"></div>
+      </div>
+
+      <div class="tk-zusatz">
+        <span class="tk-zusatz-label">Zusatzleistungen (optional)</span>
+        <div class="tk-zusatz-grid">
+          <label><input type="checkbox" name="tk-zusatz" value="Ohne Schlüssellochbohrung"> Ohne Schlüssellochbohrung</label>
+          <label><input type="checkbox" name="tk-zusatz" value="Bodenabsenkdichtung montiert"> Bodenabsenkdichtung montiert</label>
+          <label><input type="checkbox" name="tk-zusatz" value="Vollspan SST 1-1 32dB"> Vollspan SST 1-1 32dB</label>
+          <label><input type="checkbox" name="tk-zusatz" value="SST 2-1 37dB"> SST 2-1 37dB</label>
+          <label><input type="checkbox" name="tk-zusatz" value="Prüfklima C (Aluminium Einlage)"> Prüfklima C (Aluminium Einlage)</label>
+          <label><input type="checkbox" name="tk-zusatz" value="Bänder in Schwarz"> Bänder in Schwarz</label>
+        </div>
       </div>
 
       <div id="tk-lightbox" class="tk-lightbox" hidden>

@@ -93,6 +93,7 @@ function matchWandstaerke(value) {
 }
 
 function berechne() {
+  const ausfuehrung = document.querySelector('input[name="tk-ausfuehrung"]:checked').value; // "element" | "tuerblatt" | "zarge"
   const modus = document.querySelector('input[name="tk-modus"]:checked').value;
   const breite = parseFloat(document.getElementById("tk-breite").value);
   const hoehe = parseFloat(document.getElementById("tk-hoehe").value);
@@ -101,6 +102,7 @@ function berechne() {
   const bandseite = document.querySelector('input[name="tk-bandseite"]:checked').value; // "links" oder "rechts"
   const dekorId = document.querySelector('input[name="tk-dekor"]:checked')?.value || null;
   const dekor = DEKORE.find((d) => d.id === dekorId) || null;
+  const zusatzleistungen = Array.from(document.querySelectorAll('input[name="tk-zusatz"]:checked')).map((el) => el.value);
 
   const ergebnisDiv = document.getElementById("tk-ergebnis");
 
@@ -131,8 +133,13 @@ function berechne() {
   const eSpalte = bekleidung === "625" ? "E625" : "E50";
   const bekleidungLabel = bekleidung === "625" ? "62.5 / 62.5 mm" : "50 / 50 mm";
   const bandseiteLabel = bandseite === "rechts" ? "DIN Rechts" : "DIN Links";
+  const ausfuehrungLabel = { tuerblatt: "Nur Türblatt", zarge: "Nur Zarge", element: "Element (Türblatt + Zarge)" }[ausfuehrung];
+  const bestellmassLabel = { tuerblatt: "Bestellmass Türblatt (A)", zarge: "Bestellmass Zarge (A)", element: "Bestellmass Türe (A)" }[ausfuehrung];
 
   const result = {
+    ausfuehrung,
+    ausfuehrungLabel,
+    bestellmassLabel,
     modus,
     breiteEingabe: breite,
     hoeheEingabe: hoehe,
@@ -142,6 +149,7 @@ function berechne() {
     bandseiteLabel,
     dekorName: dekor ? dekor.name : null,
     dekorImg: dekor ? dekor.img : null,
+    zusatzleistungen,
     A: { breite: rowB.A, hoehe: rowH.A },
     B: { breite: rowB.B, hoehe: rowH.B },
     C: { breite: rowB.C, hoehe: rowH.C },
@@ -160,19 +168,25 @@ function zeigeErgebnis(r) {
     ? '<p style="font-size:12.5px;color:#777;font-style:italic;">Hinweis: Herholz-Fertigelemente haben eine rechnerische Bodenluft von 4 mm – das Futter kann für dauerelastische Abdichtung um 3 mm höher eingebaut werden (wichtig bei Fliesen-/Steinzeugböden).</p>'
     : "";
 
+  const zeigeRahmenMasse = r.ausfuehrung !== "tuerblatt";
+  const zeigeZierbekleidung = zeigeRahmenMasse && r.zierBestellmass;
+
   document.getElementById("tk-ergebnis").innerHTML = `
-    <div class="ergebnis-total">Bestellmass Türe (A): ${r.A.breite} × ${r.A.hoehe} mm</div>
+    <p style="font-size:13px;color:#666;margin:0 0 4px;"><strong>Ausführung:</strong> ${r.ausfuehrungLabel}</p>
+    <div class="ergebnis-total">${r.bestellmassLabel}: ${r.A.breite} × ${r.A.hoehe} mm</div>
     <div class="ergebnis-box">
       <h3>Weitere Masse</h3>
+      ${zeigeRahmenMasse ? `
       <p><strong>B – Futter-Falzmass:</strong> ${r.B.breite} × ${r.B.hoehe} mm</p>
       <p><strong>C – lichtes Durchgangsmass:</strong> ${r.C.breite} × ${r.C.hoehe} mm</p>
       <p><strong>D – Aussenkante Futter:</strong> ${r.D.breite} × ${r.D.hoehe} mm</p>
-      <p><strong>E – Aussenkante Bekleidung (${r.bekleidungLabel}):</strong> ${r.E.breite} × ${r.E.hoehe} mm</p>
+      <p><strong>E – Aussenkante Bekleidung (${r.bekleidungLabel}):</strong> ${r.E.breite} × ${r.E.hoehe} mm</p>` : ""}
       <p><strong>Bandseite:</strong> ${r.bandseiteLabel}</p>
       <p><strong>Dekor / Oberfläche:</strong> ${r.dekorName || "–"}</p>
-      ${hinweisC}
+      ${r.zusatzleistungen.length ? `<p><strong>Zusatzleistungen:</strong> ${r.zusatzleistungen.join(", ")}</p>` : ""}
+      ${zeigeRahmenMasse ? hinweisC : ""}
     </div>
-    ${r.zierBestellmass ? `
+    ${zeigeZierbekleidung ? `
     <div class="ergebnis-box">
       <h3>Zierbekleidung / Wandstärkenausgleich</h3>
       <p><strong>Bestellmass Zierbekleidung:</strong> ${r.zierBestellmass} mm</p>
@@ -229,7 +243,8 @@ function renderListe() {
   const zeilen = liste.map((r, i) => `
     <tr>
       <td>${i + 1}</td>
-      <td>${r.bezeichnung || "–"}</td>
+      <td>${r.bezeichnung || "–"}${r.zusatzleistungen.length ? `<br><span class="tk-table-sub">${r.zusatzleistungen.join(", ")}</span>` : ""}</td>
+      <td>${r.ausfuehrungLabel}</td>
       <td>${r.A.breite} × ${r.A.hoehe} mm</td>
       <td>${r.zierBestellmass ? r.zierBestellmass + " mm" : "–"}</td>
       <td>${r.bandseiteLabel}</td>
@@ -241,7 +256,7 @@ function renderListe() {
     <div class="tk-table-wrap">
       <table class="tk-table">
         <thead>
-          <tr><th>Pos</th><th>Bezeichnung</th><th>Bestellmass A (B×H)</th><th>Zierbekleidung</th><th>Band</th><th>Dekor</th><th></th></tr>
+          <tr><th>Pos</th><th>Bezeichnung</th><th>Ausführung</th><th>Bestellmass A (B×H)</th><th>Zierbekleidung</th><th>Band</th><th>Dekor</th><th></th></tr>
         </thead>
         <tbody>${zeilen}</tbody>
       </table>
@@ -258,16 +273,29 @@ function renderListe() {
 function bestellTextErstellen() {
   const liste = ladeListe();
   const zeilen = liste.map((r, i) => {
+    const zeigeRahmenMasse = r.ausfuehrung !== "tuerblatt";
     const teile = [
       `Position ${i + 1}${r.bezeichnung ? " – " + r.bezeichnung : ""}`,
-      `  Bestellmass Türe (A): ${r.A.breite} x ${r.A.hoehe} mm`,
-      `  Futter-Falzmass (B): ${r.B.breite} x ${r.B.hoehe} mm`,
-      `  Lichtes Durchgangsmass (C): ${r.C.breite} x ${r.C.hoehe} mm`,
-      `  Zierbekleidung: ${r.bekleidungLabel}${r.zierBestellmass ? `, Bestellmass ${r.zierBestellmass} mm (Bereich ${r.zierBereich})` : ""}`,
-      `  Bandseite: ${r.bandseiteLabel}`,
-      `  Dekor / Oberfläche: ${r.dekorName || "nicht gewählt"}`,
-      `  Eingabe: ${r.modus === "roh" ? "rohes Mauerlicht" : "lichtes Durchgangsmass (bestehend)"} ${r.breiteEingabe} x ${r.hoeheEingabe} mm${r.wandstaerkeEingabe ? `, Wandstärke ${r.wandstaerkeEingabe} mm` : ""}`,
+      `  Ausführung: ${r.ausfuehrungLabel}`,
+      `  ${r.bestellmassLabel}: ${r.A.breite} x ${r.A.hoehe} mm`,
     ];
+    if (zeigeRahmenMasse) {
+      teile.push(
+        `  Futter-Falzmass (B): ${r.B.breite} x ${r.B.hoehe} mm`,
+        `  Lichtes Durchgangsmass (C): ${r.C.breite} x ${r.C.hoehe} mm`,
+        `  Zierbekleidung: ${r.bekleidungLabel}${r.zierBestellmass ? `, Bestellmass ${r.zierBestellmass} mm (Bereich ${r.zierBereich})` : ""}`
+      );
+    }
+    teile.push(
+      `  Bandseite: ${r.bandseiteLabel}`,
+      `  Dekor / Oberfläche: ${r.dekorName || "nicht gewählt"}`
+    );
+    if (r.zusatzleistungen.length) {
+      teile.push(`  Zusatzleistungen: ${r.zusatzleistungen.join(", ")}`);
+    }
+    teile.push(
+      `  Eingabe: ${r.modus === "roh" ? "rohes Mauerlicht" : "lichtes Durchgangsmass (bestehend)"} ${r.breiteEingabe} x ${r.hoeheEingabe} mm${r.wandstaerkeEingabe ? `, Wandstärke ${r.wandstaerkeEingabe} mm` : ""}`
+    );
     return teile.join("\n");
   });
 
