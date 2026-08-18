@@ -26,6 +26,10 @@ const DEKORE = [
   { id: "vital-solar-eiche", name: "Vital Solar Eiche", img: "dekore/vital-solar-eiche.png" },
   { id: "vital-pinie-arktis", name: "Vital Pinie Arktis", img: "dekore/vital-pinie-arktis.png" },
   { id: "vital-pinie-hell", name: "Vital Pinie Hell", img: "dekore/vital-pinie-hell.png" },
+  { id: "vital-ast-eiche", name: "Vital Ast Eiche", img: "dekore/vital-ast-eiche.png" },
+  { id: "vital-ripped-eiche", name: "Vital Ripped Eiche", img: "dekore/vital-ripped-eiche.png" },
+  { id: "vital-mooreiche", name: "Vital Mooreiche", img: "dekore/vital-mooreiche.png" },
+  { id: "vital-flammeiche", name: "Vital Flammeiche", img: "dekore/vital-flammeiche.png" },
 ];
 
 const NORM_BREITE = [
